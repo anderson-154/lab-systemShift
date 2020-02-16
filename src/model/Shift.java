@@ -8,12 +8,21 @@ public class Shift {
 	private boolean attended;
 	private boolean active;
 	
+	/**method constructor
+	 * @param num
+	 * @param character
+	 */
 	public Shift(int num, char character) {
 		super();
 		this.num = num;
 		this.character = character;
 	}
-	
+	/**method constructor
+	 * @param num
+	 * @param character
+	 * @param user
+	 * @param active
+	 */
 	public Shift(int num, char character, User user, boolean active) {
 		super();
 		this.num = num;
@@ -26,7 +35,6 @@ public class Shift {
 	public User getUser() {
 		return user;
 	}
-
 	public int getNum() {
 		return num;
 	}
@@ -50,8 +58,11 @@ public class Shift {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-
-	public String unirCadena() {
+	/** join Cadena
+	 * <p> des:</p>this method will join an integer with a character
+	 * @return a String whit a code
+	 */
+	public String joinCadena() {
 		String code;
 		if(num<10) {
 			code=""+character+"0"+num;
@@ -61,7 +72,9 @@ public class Shift {
 		}
 		return code;
 	}
-	
+	/**next shift
+	 * <p> des:</p>this method will advance a one shift 
+	 */
 	public void nextShift() {
 		num++;
 		if(num==100) {

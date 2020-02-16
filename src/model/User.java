@@ -8,7 +8,14 @@ public class User {
 	private String tel;
 	private String direction;
 	private String typeId;
-	
+	/**
+	 * method constructor
+	 * @param name user name user. name!=null && name!="".
+	 * @param lastName user last name. lastName!=null && lastName!="".
+	 * @param tel user tel. tel!=null && tel!="".
+	 * @param direction user direction. direction!=null && direction!="".
+	 * @param typeId user type id. typeId!=null && typeId!="".
+	 */
 	public User(String id, String name, String lastName, String tel, String direction, String typeId) {
 		super();
 		this.id = id;
@@ -18,21 +25,28 @@ public class User {
 		this.direction = direction;
 		this.typeId = typeId;
 	}
+
+	
 	public String getId() {
 		return id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public String getTel() {
 		return tel;
 	}
+
 	public String getDirection() {
 		return direction;
 	}
+
 	public String getTypeId() {
 		return typeId;
 	}
