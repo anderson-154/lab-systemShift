@@ -6,7 +6,7 @@ public class Shift {
 	private int num;
 	private char character;
 	private boolean attended;
-	private boolean active;
+
 	
 	/**method constructor
 	 * @param num
@@ -23,12 +23,12 @@ public class Shift {
 	 * @param user
 	 * @param active
 	 */
-	public Shift(int num, char character, User user, boolean active) {
+	public Shift(int num, char character, User user, boolean attended) {
 		super();
 		this.num = num;
 		this.character = character;
 		this.user = user;
-		this.active = active;
+		this.attended = attended;
 	}
 	
 
@@ -50,28 +50,16 @@ public class Shift {
 	public void setAttended(boolean attended) {
 		this.attended = attended;
 	}
-
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+	
 	/** join Cadena
 	 * <p> des:</p>this method will join an integer with a character
 	 * @return a String whit a code
-	 */
-	public String joinCadena() {
-		String code;
-		if(num<10) {
-			code=""+character+"0"+num;
-		}
-		else {
-			code=""+character+num;
-		}
-		return code;
+	 */	
+	public String getStringShift() {
+		String _num=""+num;
+		return _num.length()==1 ? ""+character+"0"+num : ""+character+num;
 	}
+		
 	/**next shift
 	 * <p> des:</p>this method will advance a one shift 
 	 */
@@ -82,7 +70,11 @@ public class Shift {
 			num=0;
 		}
 		if(character==91) {
-			character='A';
+			character=65;
 		}
+	}
+	public String toAssignUser(User user) {
+		this.user=user;
+		return"Shift "+getStringShift()+" asigned to user "+user.getName();
 	}
 }

@@ -50,5 +50,11 @@ public class User {
 	public String getTypeId() {
 		return typeId;
 	}
+	@Override
+	public String toString() {
+		String user;
+		user =typeId+" "+id+".  "+name+" "+lastName+".   Address: "+tel+".   Phone Number: "+direction;
+		return user;
+	}
 
 }

@@ -1,26 +1,20 @@
 package ui;
-import model.ControlShift;
-import model.Shift;
-import model.User;
+import model.*;
 
 import java.util.Scanner;
 
 import customExceptions.EmptyInputException;
+import customExceptions.UnreservedException;
+import customExceptions.doubleUserIdException;
 
 public class Main {
 	
-	public static ControlShift myShifter;
+	public static ControlShift ShiftControl;
 	public static Shift shifts;
 	
 	public static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		String id;
-		String name;
-		String lastName;
-		String tel;
-		String direction;
-		String typeId;
 
 		int option;
 		int option2;
@@ -37,51 +31,39 @@ public class Main {
 			switch(option) {
 			case 1:
 				System.out.println("write your identification, id");
-				id = sc.nextLine();
+				String id = sc.nextLine();
 				System.out.println("write your name");
-				name = sc.nextLine();
+				String name = sc.nextLine();
 				System.out.println("write your last name");
-				lastName = sc.nextLine();
+				String lastName = sc.nextLine();
 				System.out.println("write your tel");
-				tel = sc.nextLine();
+				String tel = sc.nextLine();
 				System.out.println("write your direction");
-				direction = sc.nextLine();
-				System.out.println("write your type idemtification");
-				typeId = sc.nextLine();
-				try {
-				System.out.println(myShifter.addUser(id, name,  lastName, tel,  direction, typeId));
-				System.out.println("the user has been register");
-				}catch(EmptyInputException ei) {
-				System.out.println("not all required bonuses have been filled");
-				System.out.println(ei.getMessage());
-				}
+				String direction = sc.nextLine();
+				System.out.println("write your type identification");
+				String typeId = sc.nextLine();
 				
+				try {
+					ShiftControl.registerNewUser(id, name, lastName, tel, direction, typeId);	
+				}catch( EmptyInputException | doubleUserIdException e) {
+					System.out.println(e.getMessage());
+				}
 				
 			break;
 			
 			case 2:
-				System.out.println("write your id");
-				id = sc.nextLine();
-				myShifter.assignedShiftToUser(id);
-			break;
-			
+				System.out.println("write your identification, id");
+				id = sc.nextLine();;
+				ShiftControl.searchUserAndAssigned(id);
 			case 3:
+				boolean attended= false;
+				try {
+					ShiftControl.attendShift(attended);
+				}catch(UnreservedException e) {
+					System.out.println(e.getMessage());
+				}
 				
-				do {
-					System.out.println("1.Attend shift");
-					System.out.println("2.the user is not");
-					option2 = Integer.parseInt(sc.nextLine());
-					switch(option2)	{
-					
-					case 1:
 				
-					break;
-					
-					case 2:
-						shifts.nextShift();
-					break;	
-					}
-				}while(option2!=2);
 			break;
 			
 			case 4:
