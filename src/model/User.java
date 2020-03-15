@@ -26,7 +26,11 @@ public class User {
 		this.typeId = typeId;
 	}
 
-	
+	public User(String[] id2, String[] typeId2, String[] name2, String[] lastName2, String[] direction2, String[] tel2) {
+		super();
+	}
+
+
 	public String getId() {
 		return id;
 	}
