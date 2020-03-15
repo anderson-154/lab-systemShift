@@ -113,6 +113,10 @@ public class ControlShift {
 			}
 		}
 	
+	/**
+	 * <b>des:</b>this method show the type of Shifts
+	 * @return a String of all of types of shifts
+	 */
 	
 	public String showShiftTypes() {
 		String mss="";
@@ -121,11 +125,21 @@ public class ControlShift {
 		}
 		return mss;
 	}
+	/**
+	 * <b>des:</b>this method add a type shift
+	 * @param name
+	 * @param duration
+	 * @return String if has been add the shift
+	 */
 	public String addShiftType(String name, float duration) {
 		shiftTypes.add(new ShiftType(name, duration));
 		
 		return "shift type has been created";
 	}
+	/**
+	 * <b>des:</b>this method is a bubble sort of shifts
+	 * @return this method don't return
+	 */
 	public void bubbleSortByName() {
 		if(firstShift!=null) {
 			boolean change;
@@ -164,10 +178,35 @@ public class ControlShift {
 			}while( change );
 		}
 	}
-	public void generatedReporBinary() {
-		Collections.sort(shifts);
+	/**
+	 * <b>des:</b> this method is for search and generated the report of shifts
+	 * @param shifts
+	 * @param size
+	 * @return 
+	 */
+	public int generatedReporBinary(ArrayList<Shift>shifts, int size) {
+		int  min=0;
+		int max=shifts.size()-1;
+		int mid= (max)/2;
+		while(min<max){
+			if(shifts.size()/2<size){
+				mid++;
+			}
+			else if(shifts.size()/2>size){
+				mid--;
+			}
+			else{
+				return mid+1;
+			}
+		}
+		return -1;
 	}
 	
+	/**
+	 * <b>des:</b> this method is for generated ramdom users
+	 * @param cantidad
+	 * @return an array of Strings
+	 */
 	public  String[] generarNombresAleatorios(int cantidad) {
 		String[] nombresAleatorios = new String[cantidad];
 

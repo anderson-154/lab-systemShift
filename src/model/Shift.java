@@ -84,13 +84,18 @@ public class Shift implements Comparable<Shift> {
 			character=65;
 		}
 	}
+	/**
+	 * <b>des:</b> this method assigned a shift to user
+	 * @param user
+	 * @return
+	 */
 	public String toAssignUser(User user) {
 		this.user=user;
 		return "Shift "+getStringShift()+" asigned to user "+user.getName();
 	}
 	@Override
 	public int compareTo(Shift o) {
-		return shiftTypes.compareTo(o.shiftTypes);
+		return getStringShift().compareTo(o.getStringShift());
 	}
 	
 }

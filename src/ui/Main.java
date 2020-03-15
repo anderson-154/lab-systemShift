@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -149,6 +150,8 @@ public class Main {
 				if(option==1) {
 					try {
 						BufferedReader br = new BufferedReader(new FileReader("data/report.txt"));
+						int size=sc.nextInt();
+						//ShiftControl.generatedReporBinary(shifts , size);
 						System.out.println(br.readLine());
 						
 					}catch(Exception e) {
@@ -156,7 +159,7 @@ public class Main {
 					}
 				}else {
 					try {
-						String rxt="hola";
+						String rxt="------------";
 						PrintWriter pw=new PrintWriter("data/reporv2.txt");
 						pw.println(rxt);
 						pw.close();
